@@ -1,7 +1,8 @@
 import axios from "axios";
 import { clearCredentialsAction, dispatchAction } from "../store/storeUtils";
 
-const API_URL = "http://localhost:5001/api";
+// Use environment variable with fallback for local development
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001/api";
 
 const api = axios.create({
   baseURL: API_URL,
