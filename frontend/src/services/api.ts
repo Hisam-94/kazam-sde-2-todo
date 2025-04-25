@@ -34,8 +34,21 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Only try to refresh token if it's a 401 error and we haven't tried refreshing already
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // Check if the URL is for authentication endpoints (no token refresh for these)
+    const isAuthEndpoint =
+      originalRequest.url &&
+      (originalRequest.url.includes("/auth/login") ||
+        originalRequest.url.includes("/auth/register"));
+
+    // Only try to refresh token if:
+    // 1. It's a 401 error
+    // 2. We haven't tried refreshing already
+    // 3. It's NOT an auth endpoint (login/register)
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !isAuthEndpoint
+    ) {
       originalRequest._retry = true;
 
       try {

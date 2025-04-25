@@ -5,7 +5,12 @@ import { fetchTodos, setPage } from "../store/slices/todoSlice";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 import { Todo, TodoStatus } from "../types";
-import { FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaPlus,
+  FaChevronLeft,
+  FaChevronRight,
+  FaChevronDown,
+} from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const TodoList: React.FC = () => {
@@ -93,20 +98,27 @@ const TodoList: React.FC = () => {
         <h1 className="text-3xl font-bold text-gray-800">My Todos</h1>
         <div className="flex items-center gap-4">
           <div className="flex items-center">
-            <label htmlFor="status-filter" className="sr-only">
-              Filter by status
+            <label
+              htmlFor="status-filter"
+              className="text-gray-700 font-medium mr-2">
+              Filter:
             </label>
-            <select
-              id="status-filter"
-              value={statusFilter || ""}
-              onChange={handleFilterChange}
-              aria-label="Filter todos by status"
-              className="rounded border-gray-300 shadow-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500">
-              <option value="">All</option>
-              <option value={TodoStatus.PENDING}>Pending</option>
-              <option value={TodoStatus.IN_PROGRESS}>In Progress</option>
-              <option value={TodoStatus.COMPLETED}>Completed</option>
-            </select>
+            <div className="relative">
+              <select
+                id="status-filter"
+                value={statusFilter || ""}
+                onChange={handleFilterChange}
+                aria-label="Filter todos by status"
+                className="rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-700 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none appearance-none cursor-pointer min-w-[140px] pr-8">
+                <option value="">All</option>
+                <option value={TodoStatus.PENDING}>Pending</option>
+                <option value={TodoStatus.IN_PROGRESS}>In Progress</option>
+                <option value={TodoStatus.COMPLETED}>Completed</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <FaChevronDown className="w-4 h-4" />
+              </div>
+            </div>
           </div>
           <button
             onClick={handleAddTodo}

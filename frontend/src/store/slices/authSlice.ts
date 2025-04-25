@@ -129,10 +129,10 @@ const authSlice = createSlice({
     // Login
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
-      state.error = null;
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.error = null;
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isAuthenticated = true;
@@ -147,10 +147,10 @@ const authSlice = createSlice({
     // Register
     builder.addCase(register.pending, (state) => {
       state.isLoading = true;
-      state.error = null;
     });
     builder.addCase(register.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.error = null;
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isAuthenticated = true;
