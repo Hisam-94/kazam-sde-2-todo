@@ -2,6 +2,11 @@
 
 A full-stack Todo List application with user authentication, JWT token management, and CRUD operations for todo tasks.
 
+## Deployment URLs
+
+- **Frontend**: [https://kazam-sde-2-todo-frontend.vercel.app](https://kazam-sde-2-todo-frontend.vercel.app)
+- **Backend API**: [https://kazam-sde-2-todo.vercel.app/api](https://kazam-sde-2-todo.vercel.app/api)
+
 ## Features
 
 - **User Authentication**:
@@ -192,10 +197,16 @@ Open your browser and navigate to http://localhost:3000
 
 ## Deployment
 
-The application can be deployed on platforms like:
+The application is deployed on Vercel:
+
+- **Frontend**: Deployed on Vercel at [https://kazam-sde-2-todo-frontend.vercel.app](https://kazam-sde-2-todo-frontend.vercel.app)
+- **Backend**: Deployed on Vercel at [https://kazam-sde-2-todo.vercel.app](https://kazam-sde-2-todo.vercel.app)
+- **Database**: MongoDB Atlas
+
+For your own deployment, you can use platforms like:
 
 - Vercel or Netlify for the frontend
-- Railway, Render, or Heroku for the backend
+- Vercel, Railway, Render, or Heroku for the backend
 - MongoDB Atlas for the database
 
 ## Contributing
