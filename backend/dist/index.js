@@ -39,6 +39,21 @@ if (config_1.default.nodeEnv === "development") {
 // Routes
 app.use("/api/auth", authRoutes_1.default);
 app.use("/api/todos", todoRoutes_1.default);
+// Root endpoint with server info
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Todo API Server",
+        version: "1.0.0",
+        environment: config_1.default.nodeEnv,
+        timestamp: new Date().toISOString(),
+        uptime: `${Math.floor(process.uptime())} seconds`,
+        endpoints: {
+            auth: "/api/auth",
+            todos: "/api/todos",
+            health: "/health",
+        },
+    });
+});
 // Health check endpoint
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });

@@ -15,7 +15,7 @@ interface TodoItemProps {
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo, onEdit }) => {
   const dispatch = useDispatch<AppDispatch>();
-
+  console.log("todo", todo);
   const getStatusColor = (status: TodoStatus) => {
     switch (status) {
       case TodoStatus.PENDING:
@@ -117,28 +117,31 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onEdit }) => {
         </div>
       )}
 
-      <div className="flex justify-between mt-4">
-        <div className="flex space-x-2">
+      <div className="flex justify-between mt-6 items-center">
+        <div className="flex gap-2">
           <button
             onClick={onEdit}
-            className="text-blue-500 hover:text-blue-700"
+            className="flex items-center gap-1 px-3 py-1.5 text-sm rounded-full bg-blue-100 text-blue-700 hover:bg-blue-200 transition"
             aria-label="Edit todo">
             <FaEdit />
+            <span>Edit</span>
           </button>
+
           <button
             onClick={handleDelete}
-            className="text-red-500 hover:text-red-700"
+            className="flex items-center gap-1 px-3 py-1.5 text-sm rounded-full bg-red-100 text-red-700 hover:bg-red-200 transition"
             aria-label="Delete todo">
             <FaTrash />
+            <span>Delete</span>
           </button>
         </div>
 
         <button
           onClick={handleToggleComplete}
-          className={`${
+          className={`flex items-center gap-2 px-4 py-1.5 text-sm rounded-full font-medium transition ${
             todo.status === TodoStatus.COMPLETED
-              ? "text-gray-500 hover:text-gray-700"
-              : "text-green-500 hover:text-green-700"
+              ? "bg-green-100 text-green-700 hover:bg-green-200"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
           aria-label={
             todo.status === TodoStatus.COMPLETED
@@ -146,6 +149,9 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onEdit }) => {
               : "Mark as complete"
           }>
           <FaCheck />
+          {todo.status === TodoStatus.COMPLETED
+            ? "Mark Incomplete"
+            : "Mark Complete"}
         </button>
       </div>
     </div>

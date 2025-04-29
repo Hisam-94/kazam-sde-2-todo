@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import authService from "../../services/authService";
 import { User } from "../../types";
-import { clearCredentialsAction, AUTH_CLEAR_CREDENTIALS } from "../storeUtils";
+import { AUTH_CLEAR_CREDENTIALS } from "../storeUtils";
 
 interface AuthState {
   user: User | null;
